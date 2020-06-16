@@ -18,6 +18,7 @@ class _MainViewState extends State<MainView> {
         appBar: AppBar(
           title: Text("Main View"),
           bottom: TabBar(
+            indicatorColor: Colors.yellow,
             tabs: <Widget>[
               Tab(
                 icon: Icon(Icons.home),

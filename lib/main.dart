@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:bdvcourse/main_view.dart';
 import 'package:bdvcourse/router.dart';
 import 'package:bdvcourse/styles.dart';
@@ -42,18 +41,9 @@ class Application {
       supportedLocales: _supportedLocales(),
       theme: Styles.themeData(context),
       debugShowCheckedModeBanner: false,
-      initialRoute: MainView.routeName,
+      home: MainView(),
       onGenerateRoute: Router.generateRoute,
     );
-
-    // return MaterialApp(
-    //   locale: locale,
-    //   localizationsDelegates: _localizationsDelegates(),
-    //   supportedLocales: _supportedLocales(),
-    //   theme: Styles.themeData(context),
-    //   debugShowCheckedModeBanner: false,
-    //   home: MainView(),
-    // );
   }
 
   static Widget ios(Locale locale){
