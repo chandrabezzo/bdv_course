@@ -1,3 +1,5 @@
+import 'package:bdvcourse/detail/detail_stateless.dart';
+import 'package:bdvcourse/router.dart';
 import 'package:flutter/material.dart';
 
 class MainStateless extends StatelessWidget {
@@ -7,10 +9,23 @@ class MainStateless extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("title"),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 2
+        ), 
+        itemBuilder: (context, index){
+          return Card(
+            child: ListTile(
+              title: Text("Tes"),
+              subtitle: Text("tes"),
+              onTap: () => Navigator.push(context, Router.moveTo(DetailStateless("Info",
+                optionalInfo: "Optional"))),
+            ),
+          );
+        },
+        itemCount: 20,
       ),
-      body: Text("tes"),
     );
   }
 }
