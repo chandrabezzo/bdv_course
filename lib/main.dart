@@ -1,10 +1,15 @@
 import 'dart:io';
 import 'package:bdvcourse/main_view.dart';
+import 'package:bdvcourse/provider/movie_provider.dart';
+import 'package:bdvcourse/provider/tv_show_provider.dart';
+import 'package:bdvcourse/repository/movie_repository.dart';
+import 'package:bdvcourse/repository/tv_show_repository.dart';
 import 'package:bdvcourse/router.dart';
 import 'package:bdvcourse/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +19,13 @@ class MyApp extends StatelessWidget {
   final locale = Locale("id");
   @override
   Widget build(BuildContext context) {
-    return (Platform.isIOS) ? Application.ios(locale) : Application.android(locale, context);
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => MovieProvider(repository: MovieRepository())),
+        ChangeNotifierProvider(create: (_) => TvShowProvider(repository: TvShowRepository()))
+      ],
+      child: (Platform.isIOS) ? Application.ios(locale) : Application.android(locale, context),
+    );
   }
 }
 

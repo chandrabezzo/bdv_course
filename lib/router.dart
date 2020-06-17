@@ -1,5 +1,6 @@
 import 'package:bdvcourse/detail/detail_stateful.dart';
 import 'package:bdvcourse/main/main_stateful.dart';
+import 'package:bdvcourse/main_integration_view.dart';
 import 'package:bdvcourse/main_view.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,8 @@ class Router {
       case DetailStateful.routeName:
         final data = settings.arguments as Detail;
         return _routeTo(DetailStateful(data));
+      case MainIntegrationView.routeName:
+        return _routeTo(MainIntegrationView());
       
       default:
         return _routeTo(MainView());

@@ -1,5 +1,6 @@
 import 'package:bdvcourse/main/main_stateful.dart';
 import 'package:bdvcourse/main/main_stateless.dart';
+import 'package:bdvcourse/main_integration_view.dart';
 import 'package:flutter/material.dart';
 
 class MainView extends StatefulWidget {
@@ -10,6 +11,7 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -17,6 +19,12 @@ class _MainViewState extends State<MainView> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Main View"),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.movie_creation),
+              onPressed: () => Navigator.pushNamed(context, MainIntegrationView.routeName),
+            )
+          ],
           bottom: TabBar(
             indicatorColor: Colors.yellow,
             tabs: <Widget>[
