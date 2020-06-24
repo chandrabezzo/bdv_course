@@ -5,7 +5,7 @@ class Styles {
   static ThemeData themeData(BuildContext context){
     return ThemeData(
       primaryColor: colorPrimary,
-      fontFamily: "Montserrat"
+      fontFamily: "Montserrat",
     );
   }
 }

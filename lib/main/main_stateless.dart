@@ -11,11 +11,12 @@ class MainStateless extends StatelessWidget {
     return Scaffold(
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 2
+          crossAxisCount: 3,
+          childAspectRatio: 1
         ), 
         itemBuilder: (context, index){
           return Card(
+            elevation: 2,
             child: ListTile(
               title: Text("Tes"),
               subtitle: Text("tes"),
