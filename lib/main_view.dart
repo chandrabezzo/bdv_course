@@ -14,6 +14,8 @@ class _MainViewState extends State<MainView> {
 
   @override
   Widget build(BuildContext context) {
+    final widthDevice = MediaQuery.of(context).size.width;
+    final heightDevice = MediaQuery.of(context).size.height;
     return DefaultTabController(
       length: 2,
       child: Scaffold(
