@@ -73,7 +73,7 @@ class Result {
         title: json["title"],
         voteAverage: json["vote_average"].toDouble(),
         overview: json["overview"],
-        releaseDate: (json["release_date"] != null) ? DateTime.parse(json["release_date"]) : null,
+        releaseDate: DateTime.parse(json["release_date"]),
     );
 
     Map<String, dynamic> toJson() => {

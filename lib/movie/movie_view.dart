@@ -14,7 +14,14 @@ class MovieView extends StatefulWidget {
 
 class _MovieViewState extends State<MovieView> {
 
-  List<Result> _allMovies;
+  MovieProvider _movieProvider;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    
+    _movieProvider = Provider.of(context); 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,16 +39,13 @@ class _MovieViewState extends State<MovieView> {
         value: Provider.of<MovieProvider>(context),
         child: Consumer<MovieProvider>(
           builder: (context, provider, _){
-            if(_allMovies == null){
-              provider.getMovies().then((value){
-                _allMovies = value;
-              });
+            if(provider.movies == null){
               return Center(child: CircularProgressIndicator());
             }
             else {
               return ListView.separated(
                 itemBuilder: (context, index){
-                  final data = _allMovies[index];
+                  final data = provider.movies[index];
                   return ListTile(
                     title: Text(data.title),
                     subtitle: Text(data.overview, maxLines: 3, overflow: TextOverflow.ellipsis),
@@ -52,14 +56,19 @@ class _MovieViewState extends State<MovieView> {
                         backgroundImage: NetworkImage("${Endpoints.IMAGE}${data.posterPath}"),
                       ),
                     ),
+                    onTap: () => _movieProvider.searchMovies(data.title),
                   );
                 }, 
                 separatorBuilder: (context, index) => Divider(), 
-                itemCount: _allMovies.length
+                itemCount: provider.movies.length
               );
             }
           },
         ),
+      ),
+      bottomNavigationBar: RaisedButton(
+        child: Text("API 1"),
+        onPressed: () => _movieProvider.getMovies(),
       ),
     );
   }

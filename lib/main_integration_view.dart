@@ -14,7 +14,6 @@ class MainIntegrationView extends StatefulWidget {
 class _MainIntegrationViewState extends State<MainIntegrationView> {
   
   int _selectedMenu = 0;
-  bool _notifUpdate = false;
 
   @override
   Widget build(BuildContext context) {

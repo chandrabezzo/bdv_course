@@ -3,6 +3,7 @@ import 'package:bdvcourse/movie/movie.dart';
 import 'package:dio/dio.dart';
 
 class MovieRepository {
+  
   Future<MovieResponse> discover() async {
     try {
       final responJson = await Dio().get(Endpoints.MOVIES);
